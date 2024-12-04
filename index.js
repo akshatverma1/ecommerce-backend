@@ -20,5 +20,5 @@ app.get("/user",(req,res)=>{
 })
 app.get("/us/:username",(req,res)=>{
     console.log(req.params);
-    res.render("home.ejs");
+    res.redirect("https://ecommerce-akshat.netlify.app/");
 })
