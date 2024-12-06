@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = 2;
 const path = require("path");
+const { uuidv4 } = require('uuid');
+
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"/views"));
@@ -10,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 let datas= [
-    { username: "john123", gmail: "john123@gmail.com", password: "3489201#John" },
+    { id:uuidv4()  ,username: "john123", gmail: "john123@gmail.com", password: "3489201#John" },
     { username: "emma456", gmail: "emma456@yahoo.com", password: "8723456#Emma" },
     { username: "alex789", gmail: "alex789@outlook.com", password: "9274563#Alex" },
     { username: "mike007", gmail: "mike007@hotmail.com", password: "1847562#Mike" },
@@ -38,4 +40,7 @@ app.post("/new",(req,res)=>{
     let {username,gmail,password} = req.body;
     datas.push({username,gmail,password});
     res.redirect("http://localhost:2/show")
+})
+app.get("/delete:id",(req,res)=>{
+    res.send("Deleta");
 })
